@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{layout/layout :: head}"></head>
+
+<body class="bg-violet-100 flex flex-col justify-center items-center h-screen w-screen ">
+<div
+        class="relative bg-zinc-700 p-10 rounded-xl w-1/4 flex flex-col gap-4 text-white text-center shadow-xl shadow-pink-500">
+
+    <div class=" absolute  top-5 left-5 ">
+        <a th:href="@{/}" class="text-pink-300 hover:text-pink-400 transition-all"> &#8592; Back</a>
+    </div>
+
+
+    <div>
+        <img th:src="@{/images/img.png}" alt="Encabezado" class="w-[900px] h-[50px]  object-cover">
+
+    </div>
+    <header class="text-3xl">
+        <h1>Inicia Sesión</h1>
+
+    </header>
+    <div>
+        <form action="" th:action="@{/login}" method="post" class="flex flex-col gap-4">
+            <div>
+                <span th:if="${error}" class="text-red-500">[[${error}]]</span>
+                <span th:if="${logout}" class="text-sky-500">[[${logout}]]</span>
+            </div>
+            <div class="flex flex-col gap-4 text-start">
+                <label for="username" class="text-lg underline decoration-wavy underline-offset-4">Email</label>
+                <input type="email" id="username" name="username" th:value="${username}"
+                       class="w-full p-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 border border-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-500"
+                       placeholder="Correo Electrónico" required>
+            </div>
+            <div class="flex flex-col gap-4 text-start">
+                <label for="password"
+                       class="text-lg underline decoration-wavy underline-offset-4">Contraseña</label>
+                <input type="password" id="password" name="password"
+                       class="w-full p-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 border border-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-500"
+                       placeholder="Introduce tu contraseña" required>
+            </div>
+
+            <div>
+                <input type="submit" value="Iniciar Sesión"
+                       class="w-full py-3 px-4 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-lg cursor-pointer transition-all">
+            </div>
+            <div class="text-gray-300">
+                <span>Si no tienes cuenta, <a th:href="@{/register}"
+                                              class="text-pink-200 hover:text-sky-200 transition-all underline-offset-4">Registrate
+                        ahora</a></span>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<footer class="realtive" th:replace="~{layout/layout :: footer}"></footer>
+</body>
+
+</html>

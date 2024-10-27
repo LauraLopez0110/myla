@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Integrantes:
+Vanesa Alexandra Amaya Bohorquez,
+ Laura Yulieth López Albino-->
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="shortcut icon" th:href="@{/images/logo.png}" type="image/x-icon">
+    <title> Proyecto Integrador</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+<body class="bg-black text-white">
+<header th:replace="~{layout/layout :: header}"></header>
+<div class="flex flex-col h-screen mt-[70px]">
+    <!-- Primera mitad: Carrusel -->
+    <div class="flex-1 flex items-center justify-center bg-black p-4">
+        <div class="relative w-full max-w-2xl overflow-hidden">
+            <!-- Carousel container -->
+            <div id="imageCarousel" class="flex transition-transform duration-500 ease-in-out">
+                <!-- Carousel items -->
+                <div class="w-full flex-shrink-0">
+                    <img src="/images/quien.jpeg" alt="Imagen 0" class="w-85 object-cover">
+                </div>
+                <div class="w-full flex-shrink-0">
+                    <img src="/images/imagen1.jpg" alt="Imagen 1" class="w-full object-cover">
+                </div>
+                <div class="w-full flex-shrink-0">
+                    <img src="/images/imagen3.jpg" alt="Imagen 2" class="w-full object-cover">
+                </div>
+                <div class="w-full flex-shrink-0">
+                    <img src="/images/imagen4.jpg" alt="Imagen 3" class="w-full object-cover">
+                </div>
+                <div class="w-full flex-shrink-0">
+                    <img src="/images/imagen5.jpg" alt="Imagen 4" class="w-full object-cover">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Segunda mitad: Productos -->
+    <div class="flex-1 flex flex-col items-center bg-gradient-to-r from-black to-black py-8">
+        <h2 class="text-3xl font-bold text-white text-center mb-8">Nuestros Productos</h2>
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4 px-6">
+            <!-- Cofres -->
+            <div class="bg-white p-4 rounded-lg shadow-md text-center">
+                <img src="/images/cofres.png" alt="Cofres" class="w-full h-32 object-contain mx-auto">
+                <h3 class="text-lg font-semibold mt-4 text-black">Cofres</h3>
+                <button class="mt-4 bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-700">
+                    Ver más detalles
+                </button>
+            </div>
+            <!-- Portallaves -->
+            <div class="bg-white p-4 rounded-lg shadow-md text-center">
+                <img src="/images/porta.png" alt="Portallaves" class="w-full h-32 object-contain mx-auto">
+                <h3 class="text-lg font-semibold mt-4 text-black">Portallaves</h3>
+                <button class="mt-4 bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-700">
+                    Ver más detalles
+                </button>
+            </div>
+            <!-- Llaveros -->
+            <div class="bg-white p-4 rounded-lg shadow-md text-center">
+                <img src="/images/llave.png" alt="Llaveros" class="w-full h-32 object-contain mx-auto">
+                <h3 class="text-lg font-semibold mt-4 text-black">Llaveros</h3>
+                <button class="mt-4 bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-700">
+                    Ver más detalles
+                </button>
+            </div>
+            <!-- Candados -->
+            <div class="bg-white p-4 rounded-lg shadow-md text-center">
+                <img src="/images/candado.png" alt="Candados" class="w-full h-32 object-contain mx-auto">
+                <h3 class="text-lg font-semibold mt-4 text-black">Candados</h3>
+                <button class="mt-4 bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-700">
+                    Ver más detalles
+                </button>
+            </div>
+            <!-- Aretes -->
+            <div class="bg-white p-4 rounded-lg shadow-md text-center">
+                <img src="/images/aretes.png" alt="Aretes" class="w-full h-32 object-contain mx-auto">
+                <h3 class="text-lg font-semibold mt-4 text-black">Aretes</h3>
+                <button class="mt-4 bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-700">
+                    Ver más detalles
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script>
+    // JavaScript para manejar el carrusel aleatorio
+    const carousel = document.getElementById('imageCarousel');
+    let index = 0;
+    const totalItems = carousel.children.length;
+
+    function updateCarousel() {
+        const offset = -index * 100; // Calcular el desplazamiento
+        carousel.style.transform = `translateX(${offset}%)`;
+    }
+
+    function getRandomIndex() {
+        return Math.floor(Math.random() * totalItems); // Generar un índice aleatorio
+    }
+
+    setInterval(() => {
+        index = getRandomIndex(); // Seleccionar aleatoriamente la próxima imagen
+        updateCarousel();
+    }, 2000); // Cambiar cada 3 segundos (puedes ajustar el tiempo)
+</script>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:fragment="head">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="shortcut icon" th:href="@{/images/Tunja.png}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>[[${title}]]</title>
+</head>
+
+<body class="bg-slate-800 text-white flex justify-center items-center h-screen w-screen"
+      th:style="'background-image: url('+ @{/images/Tunja.png} +'); background-size: cover;
+       background-position: center; backdrop-filter:blur(2px)'">
+
+
+<!-- Header Start -->
+
+<header th:fragment="header">
+    <nav class="absolute top-0 left-0 right-0 flex justify-between bg-black py-4 px-10 w-screen h-[70px] shadow-lg items-center">
+        <div class="flex items-center text-md font-bold text-sky-400">
+            <a th:href="@{/}" class="flex items-center justify-center bg-slate-900 rounded-xl px-10 h-full gap-2 shadow-md">
+                <img src="/images/logo.png" alt="Logo" class="h-10">
+                <div class="flex flex-col items-center">
+                    <span class="text-xl text-white font-extrabold">Myla</span>
+                    <span class="text-xl text-white font-extrabold">Artesanías</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Buscar -->
+        <form action="#" method="GET" class="relative flex-grow mx-8 w-[400%]">
+            <input type="text" name="search" placeholder="Buscar"
+                   class="w-full px-4 py-2 rounded-full bg-slate-700 teabsolute right-5 top-1/2xt-white border border-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-500" />
+            <button type="submit" class="absolute right-5 top-1/2 transform -translate-y-1/2">
+                <i class="fas fa-search text-pink-500 text-xl"></i>
+            </button>
+        </form>
+
+
+        <ul class="flex gap-4 w-full h-full justify-end">
+            <li sec:authorize="isAnonymous"
+                class="border-2 border-pink-500 px-2 py-1 rounded hover:bg-pink-500 hover:text-white
+                text-center active:scale-105 p-4 transition-all hover:cursor-pointer hover:ring-2">
+                <a th:href="@{/register}">Registrar</a>
+
+            <li sec:authorize="isAnonymous"
+                class="border-2 border-pink-500 px-2 py-1 rounded bg-pink-500 text-white text-center
+    transition-all active:scale-105 p-2 hover:cursor-pointer hover:ring-2">
+                <a th:href="@{/login}" class="inline-block leading-none -mt-1">Iniciar Sesión</a>
+            </li>
+
+            <li sec:authorize="isAuthenticated"
+                class="border-2 border-white px-2 py-1 rounded bg-white text-slate-800 text-center
+                 transition-all active:scale-105 p-4 hover:cursor-pointer hover:ring-2">
+                <form th:action="@{/logout}" method="post">
+                    <a class="nav-link l-login" onclick="this.parentNode.submit();" href="#">Cerrar sesión</a>
+                </form>
+            </li>
+        </ul>
+    </nav>
+    <nav class="absolute top-[70px] left-0 right-0 flex justify-between bg-stone-400 py-4 px-20
+    w-screen h-[50px] " th:if="${urlRegistro}" sec:authorize="hasRole('ADMINISTRADOR')">
+        <ul class="w-full flex justify-end items-center">
+            <li class="flex gap-4 p-2 border border-white rounded-xl hover:bg-white
+            hover:text-slate-800 text-sm active:scale-105 transition-all">
+                <a th:href="@{${urlRegistro}}">Agregar
+                    nuevo registro</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<!-- Header fin -->
+
+<!-- fondo inicio -->
+<div th:fragment="fondo" class="absolute top-0 z-[-2] h-screen w-screen
+bg-[radial-gradient(ellipse_80%_80%_at_50%_20%,rgba(120,119,198,0.3),rgba(255,255,255,0)] bg-cover"
+     th:style="'background-color: rgba(240, 240, 240, 1);'">
+</div>
+
+</div>
+<!-- fondo fin -->
+
+<!-- footer -->
+
+<footer th:fragment="footer" class="sticky bottom-2 left-0 right-0 flex justify-center
+    items-center h-[70px] w-full m-6 p-2">
+    <div class="text-center text-white absolute bottom-[-450px] left-0 right-0">
+        &copy; 2024. Casi todos los derechos reservados
+    </div>
+</footer>
+
+
+<!-- footer fin -->
+
+</body>
+</html>
