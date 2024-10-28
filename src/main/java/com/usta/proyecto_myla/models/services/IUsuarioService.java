@@ -16,4 +16,6 @@ public interface IUsuarioService {
     public UsuarioEntity actualizarUsuarioEntity(UsuarioEntity usuario);
 
     public UsuarioEntity findByEmail(String email);
+
+    public UsuarioEntity viewDetail(Long id);
 }

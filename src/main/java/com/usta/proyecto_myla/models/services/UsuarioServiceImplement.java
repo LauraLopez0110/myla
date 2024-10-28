@@ -53,4 +53,7 @@ import java.util.List;
         return usuarioDao.findByEmail(email);
     }
 
+    @Override
+    @Transactional
+    public UsuarioEntity viewDetail(Long id){return usuarioDao.viewDetail(id);}
 }

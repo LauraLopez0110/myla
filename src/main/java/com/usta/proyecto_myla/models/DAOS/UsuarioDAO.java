@@ -14,4 +14,9 @@ public interface UsuarioDAO extends CrudRepository<UsuarioEntity, Long> {
     @Query("SELECT US FROM UsuarioEntity US WHERE US.correoUsuario = ?1")
     public UsuarioEntity findByEmail(String email);
 
+    //Método de busqueda por id
+    @Transactional
+    @Query("SELECT US FROM UsuarioEntity US WHERE US.idUsuario = ?1")
+    public UsuarioEntity viewDetail(Long id);
+
 }
