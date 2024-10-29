@@ -56,7 +56,7 @@
             <li sec:authorize="isAuthenticated"
                 class="border-2 border-white px-2 py-1 rounded bg-white text-slate-800 text-center
                  transition-all active:scale-105 p-4 hover:cursor-pointer hover:ring-2">
-                <form th:action="@{/perfil}" method="post">
+                <form th:action="@{/perfil}" method="get">
                     <a class="nav-link l-login" onclick="this.parentNode.submit();" href="#">Perfil</a>
                 </form>
             </li>

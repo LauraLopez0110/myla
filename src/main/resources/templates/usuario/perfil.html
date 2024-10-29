@@ -37,10 +37,9 @@
             <p class="bg-transparent py-2 border-2 border-pink-500 rounded-lg text-white">[[${usuario.telefonoUsuario}]]</p>
         </div>
 
-        <div class="text-start">
+        <div class="text-start" th:each="rol : ${usuario.role}">
             <label class="text-lg">Rol:</label>
-            <p class="bg-transparent py-2 border-2 border-pink-500 rounded-lg text-white">[[${usuario.role}]]
-
+            <p class="bg-transparent py-2 border-2 border-pink-500 rounded-lg text-white">[[${rol.nombreRol}]]
             </p>
         </div>
 
