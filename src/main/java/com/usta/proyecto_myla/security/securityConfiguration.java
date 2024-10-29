@@ -30,8 +30,8 @@ public class securityConfiguration {
     @Bean
     SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(authorize -> authorize   // Permisos para Estudiantes
-                        .requestMatchers("/crearEstudiante", "/editarEstudiante", "/eliminarEstudiante")
-                        .hasAnyRole("ADMINISTRADOR")
+                        .requestMatchers("/perfil")
+                        .hasAnyRole("ADMINISTRADOR", "CLIENTE")
                         .requestMatchers("/estudiantes", "/detalleEstudiante")
                         .hasAnyRole("ESTUDIANTE", "DOCENTE", "ADMINISTRADOR")
 
