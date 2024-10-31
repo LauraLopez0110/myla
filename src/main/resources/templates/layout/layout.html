@@ -26,7 +26,7 @@
                 <img src="/images/logo.png" alt="Logo" class="h-10">
                 <div class="flex flex-col items-center">
                     <span class="text-xl text-white font-extrabold">Myla</span>
-                    <span class="text-xl text-white font-extrabold">Artesanías</span>
+                    <span class="text-xl text-white font-extrabold">Artesanal</span>
                 </div>
             </a>
         </div>
@@ -54,6 +54,14 @@
                 class="border-2 border-pink-500 px-2 py-1 rounded bg-pink-500 text-white text-center
     transition-all active:scale-105 p-2 hover:cursor-pointer hover:ring-2">
                 <a th:href="@{/login}" class="inline-block leading-none -mt-1">Iniciar Sesión</a>
+            </li>
+
+            <li sec:authorize="isAuthenticated"
+                class="border-2 border-white px-2 py-1 rounded bg-white text-slate-800 text-center
+                 transition-all active:scale-105 p-4 hover:cursor-pointer hover:ring-2">
+                <form th:action="@{/perfil}" method="get">
+                    <a class="nav-link l-login" onclick="this.parentNode.submit();" href="#">Perfil</a>
+                </form>
             </li>
 
             <li sec:authorize="isAuthenticated"

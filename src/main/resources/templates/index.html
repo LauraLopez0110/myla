@@ -2,20 +2,20 @@
 <html lang="en">
 <!-- Integrantes:
 Vanesa Alexandra Amaya Bohorquez,
-Laura Yulieth López Albino-->
+ Laura Yulieth López Albino-->
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="shortcut icon" th:href="@{/images/logo.png}" type="image/x-icon">
-    <title>Proyecto Integrador</title>
+    <title> Proyecto Integrador</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
 
 <body class="bg-black text-white">
 <header th:replace="~{layout/layout :: header}"></header>
-
-<div class="flex flex-col min-h-screen mt-[70px]"> <!-- Cambiado a min-h-screen para abarcar la pantalla -->
+<div class="flex flex-col h-screen mt-[70px]">
     <!-- Primera mitad: Carrusel -->
     <div class="flex-1 flex items-center justify-center bg-black p-4">
         <div class="relative w-full max-w-2xl overflow-hidden">
@@ -42,7 +42,7 @@ Laura Yulieth López Albino-->
     </div>
 
     <!-- Segunda mitad: Productos -->
-    <div class="flex-1 flex flex-col items-center bg-gradient-to-r from-black to-black py-8 mb-8"> <!-- Añadido mb-8 -->
+    <div class="flex-1 flex flex-col items-center bg-gradient-to-r from-black to-black py-8">
         <h2 class="text-3xl font-bold text-white text-center mb-8">Nuestros Productos</h2>
         <div class="grid grid-cols-2 md:grid-cols-5 gap-4 px-6">
             <!-- Cofres -->
@@ -87,69 +87,27 @@ Laura Yulieth López Albino-->
             </div>
         </div>
     </div>
-
-    <!-- Sección de Contacto -->
-    <section class="bg-gray-900 p-8 rounded-lg mx-4 mb-8">
-        <h2 class="text-3xl font-bold text-center mb-4">Contáctanos</h2>
-        <p class="text-center mb-8">Estamos aquí para ayudarte. Elige el método que prefieras para ponerte en contacto con nosotros.</p>
-
-        <!-- Tarjetas de Contacto -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            <!-- Teléfono -->
-            <div class="bg-gray-700 p-6 rounded-lg shadow-md text-center">
-                <a href="https://wa.me/573138668356?text=Hola,%20me%20interesa%20su%20producto." target="_blank" rel="noopener noreferrer" class="flex flex-col items-center">
-                    <i class="fas fa-phone-alt fa-2x mb-4"></i>
-                    <h3 class="text-lg font-semibold">Teléfono</h3>
-                    <p class="text-gray-300"> 313 86 68 356</p>
-                </a>
-            </div>
-
-            <!-- Correo Electrónico -->
-            <div class="bg-gray-700 p-6 rounded-lg shadow-md text-center">
-                <i class="fas fa-envelope fa-2x mb-4"></i>
-                <h3 class="text-lg font-semibold">Correo Electrónico</h3>
-                <p class="text-gray-300">mylaartesal@gmail.com</p>
-            </div>
-            <!-- Redes Sociales -->
-            <div class="bg-gray-700 p-6 rounded-lg shadow-md text-center">
-                <i class="fas fa-share-alt fa-2x mb-4"></i>
-                <h3 class="text-lg font-semibold">Redes Sociales</h3>
-                <div class="flex justify-center space-x-4 mt-2">
-                    <a href="https://www.instagram.com/myla_artesanal?igsh=Z2RjaWxtc2YwYWlm" target="_blank" class="text-white hover:text-pink-400">
-                        <i class="fab fa-instagram fa-2x"></i>
-                    </a>
-                    <a href="https://www.facebook.com/profile.php?id=61565618039772&mibextid=LQQJ4d" target="_blank" class="text-white hover:text-blue-400">
-                        <i class="fab fa-facebook fa-2x"></i>
-                    </a>
-                    <a href="https://wa.me/573138668356?text=Hola,%20me%20interesa%20su%20producto."  target="_blank" class="text-white hover:text-green-400">
-                        <i class="fab fa-whatsapp fa-2x"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Formulario de Contacto -->
-        <div class="bg-gray-700 p-4 rounded-lg shadow-md w-full max-w-md mx-auto">
-            <h3 class="text-xl font-semibold mb-4">Envíanos un Mensaje</h3>
-            <form action="/send-message" method="POST">
-                <input type="text" name="name" placeholder="Nombre" required class="w-full p-2 mb-2 rounded border border-gray-400">
-                <input type="email" name="email" placeholder="Correo electrónico" required class="w-full p-2 mb-2 rounded border border-gray-400">
-                <textarea name="message" placeholder="Tu mensaje" rows="3" required class="w-full p-2 mb-2 rounded border border-gray-400"></textarea>
-                <button type="submit" class="bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-700 transition">Enviar Mensaje</button>
-            </form>
-        </div>
-    </section>
-
-
-
-
 </div>
 
-<footer class="bg-black text-white py-6 mt-4">
-    <div class="container mx-auto text-center">
-        <p>&copy; 2024 Proyecto Integrador. Todos los derechos reservados.</p>
-    </div>
-</footer>
-
 </body>
-</html>
+
+<script>
+    // JavaScript para manejar el carrusel aleatorio
+    const carousel = document.getElementById('imageCarousel');
+    let index = 0;
+    const totalItems = carousel.children.length;
+
+    function updateCarousel() {
+        const offset = -index * 100; // Calcular el desplazamiento
+        carousel.style.transform = `translateX(${offset}%)`;
+    }
+
+    function getRandomIndex() {
+        return Math.floor(Math.random() * totalItems); // Generar un índice aleatorio
+    }
+
+    setInterval(() => {
+        index = getRandomIndex(); // Seleccionar aleatoriamente la próxima imagen
+        updateCarousel();
+    }, 2000); // Cambiar cada 3 segundos (puedes ajustar el tiempo)
+</script>
