@@ -2,6 +2,7 @@ package com.usta.proyecto_myla.controllers;
 
 import com.usta.proyecto_myla.entities.RolEntity;
 import com.usta.proyecto_myla.entities.UsuarioEntity;
+import com.usta.proyecto_myla.models.DAOS.UsuarioDAO;
 import com.usta.proyecto_myla.models.services.IRolService;
 import com.usta.proyecto_myla.models.services.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,8 @@ public class UsuarioController {
 
     @Autowired
     private IRolService iRolService;
+    @Autowired
+    private UsuarioDAO usuarioDAO;
 
     /* ----------------------------------------------------------------------------- */
     @GetMapping(value = "/register")
@@ -72,8 +75,10 @@ public class UsuarioController {
         model.addAttribute("title", "Perfil");
         model.addAttribute("usuario", usuario);
 
-        return "usuario/perfil"; // Asegúrate de que este sea el nombre de tu vista
+        return "usuario/perfil"; // Ruta del perfil
     }
 
-    /* ----------------------------------------------------------------------------- */
+
+
+
     }
